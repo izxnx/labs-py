@@ -2,11 +2,9 @@
 # Варіант 8
 import random
 
-# from shared.student import FULL_NAME, VARIANT
 FULL_NAME = "Гресько Владислав Ігорович"
 VARIANT = 8
 
-# Вихідні дані варіанту
 passwords = [
     "ThreatH@nt3r", "weak123", "P3n3trat10n@Test", "visitor",
     "Cyber@Defense2023", "normal", "Incident@R3sp0nse", "standard",
@@ -31,21 +29,17 @@ def has_special(password):
     return any(ch in SPECIAL_CHARS for ch in password)
 
 def evaluate_password(password, password_list):
-    """Визначає рівень надійності одного пароля."""
 
-    # 1. Заборонений
     if password in forbidden_passwords or len(password) < criteria["min_length"]:
         return "Заборонений"
     meets_all_required = has_digit(password) and has_upper(password) and has_special(password)
 
-    # 2. Сильний / Дуже сильний
     if meets_all_required:
         if len(password) >= criteria["min_length"] + 4:
             is_unique = password_list.count(password) == 1
             return "Дуже сильний" if is_unique else "Сильний"
         return "Сильний"
 
-    # 3. Середній / Слабкий (не всі критерії виконано)
     groups_ok = sum([has_digit(password), has_upper(password), has_lower(password), has_special(password)])
 
     if groups_ok >= 2:
@@ -56,8 +50,6 @@ def main():
     print(f"Студент: {FULL_NAME}, Варіант: {VARIANT}\n")
 
     working_list = passwords.copy()
-
-    # 3 випадкові дублікати паролів
     for _ in range(3):
         random_index = random.randint(0, len(passwords) - 1)
         working_list.append(passwords[random_index])

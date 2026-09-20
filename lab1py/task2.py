@@ -20,7 +20,6 @@ security_levels = ("Unclassified", "For Official Use", "Confidential", "Secret")
 blocked_users = {"test_account", "gdpr_violation", "data_breach_user"}
 
 def check_access(username, resource_level):
-    """Повертає (статус, причина_відмови) для пари користувач-ресурс."""
 
     if username not in users:
         return "DENY", "User not found"
