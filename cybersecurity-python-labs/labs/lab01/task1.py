@@ -1,7 +1,4 @@
-"""Завдання 1: Комплексний аналізатор надійності паролів.
 
-Варіант 8.
-"""
 
 import os
 import random
@@ -11,7 +8,7 @@ sys.path.append(
     os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
 )
 
-from shared.student import STUDENT_NAME, VARIANT_NUMBER  # noqa: E402
+from shared.student import STUDENT_NAME, VARIANT_NUMBER
 
 PASSWORDS = [
     "ThreatH@nt3r",
@@ -46,31 +43,22 @@ SPECIAL_CHARS = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`"
 
 
 def has_digit(password):
-    """Перевірити, чи містить пароль хоча б одну цифру."""
     return any(ch.isdigit() for ch in password)
 
 
 def has_upper(password):
-    """Перевірити, чи містить пароль хоча б одну велику літеру."""
     return any(ch.isupper() for ch in password)
 
 
 def has_lower(password):
-    """Перевірити, чи містить пароль хоча б одну малу літеру."""
     return any(ch.islower() for ch in password)
 
 
 def has_special(password):
-    """Перевірити, чи містить пароль спеціальний символ."""
     return any(ch in SPECIAL_CHARS for ch in password)
 
 
 def evaluate_password(password, password_list):
-    """Оцінити надійність пароля згідно з критеріями варіанту.
-
-    Повертає одну з категорій: "Заборонений", "Слабкий",
-    "Середній", "Сильний", "Дуже сильний".
-    """
     if password in FORBIDDEN_PASSWORDS:
         return "Заборонений"
     if len(password) < CRITERIA["min_length"]:
@@ -101,7 +89,6 @@ def evaluate_password(password, password_list):
 
 
 def main():
-    """Запустити демонстрацію аналізатора надійності паролів."""
     print(f"Студент: {STUDENT_NAME}, Варіант: {VARIANT_NUMBER}\n")
 
     working_list = PASSWORDS.copy()

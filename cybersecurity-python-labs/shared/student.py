@@ -5,5 +5,5 @@
 """
 
 STUDENT_NAME = "Гресько Владислав Ігорович"
-GROUP_NAME = "Ваша Група"  # TODO: вкажіть свою групу, напр. "КБ-301"
+GROUP_NAME = "КБ-206"
 VARIANT_NUMBER = 8

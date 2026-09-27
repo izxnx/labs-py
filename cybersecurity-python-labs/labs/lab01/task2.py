@@ -1,7 +1,3 @@
-"""Завдання 2: Багаторівнева система контролю доступу.
-
-Варіант 8.
-"""
 
 USERS = {
     "crypto_specialist": {
@@ -60,10 +56,7 @@ BLOCKED_USERS = {"test_account", "gdpr_violation", "data_breach_user"}
 
 
 def check_access(username, resource_level):
-    """Перевірити доступ користувача до ресурсу заданого рівня.
 
-    Повертає кортеж (статус, причина_відмови_або_None).
-    """
     if username not in USERS:
         return "DENY", "User not found"
 
@@ -82,7 +75,6 @@ def check_access(username, resource_level):
 
 
 def main():
-    """Запустити демонстрацію системи контролю доступу."""
     print("Ресурси системи:")
     for name, level in RESOURCES:
         print(f"  {name} — {SECURITY_LEVELS[level - 1]}")

@@ -1,7 +1,3 @@
-"""Завдання 3: Безпечне хешування, CSV-база та JSON-логування.
-
-Варіант 8: алгоритм sha256, мінімальна довжина пароля - 11.
-"""
 
 import csv
 import hashlib
@@ -30,7 +26,6 @@ class ValidationError(Exception):
 
 
 def generate_hash(password: str, salt: str = "00000") -> str:
-    """Згенерувати sha256-хеш від конкатенації пароля та солі."""
     if not password or not salt:
         raise ValueError("Пароль і сіль не можуть бути порожніми")
     if len(password) < MIN_PASSWORD_LENGTH:
@@ -55,12 +50,12 @@ USERS_TO_REGISTER = (
 
 
 def create_user(username, password):
-    """Створити пару (логін, хеш пароля) для запису в базу."""
+
     return username, generate_hash(password, MY_SALT)
 
 
 def create_users(users_list):
-    """Створити CSV-базу користувачів, пропускаючи некоректні записи."""
+
     os.makedirs(DATA_FOLDER, exist_ok=True)
     try:
         with open(USERS_FILE, "w", newline="", encoding="utf-8") as f:
@@ -75,7 +70,7 @@ def create_users(users_list):
 
 
 def read_users_db():
-    """Зчитати базу користувачів із CSV-файлу."""
+
     if not os.path.exists(USERS_FILE):
         print("Файл бази даних не знайдено.")
         return []
@@ -92,7 +87,7 @@ def read_users_db():
 
 
 def print_users_table():
-    """Вивести базу користувачів у вигляді таблиці."""
+
     users_db = read_users_db()
     print(f"{'Логін':<15} | Хеш пароля")
     print("-" * 80)
@@ -101,7 +96,7 @@ def print_users_table():
 
 
 def save_log_entry(user, result):
-    """Додати запис про спробу входу у JSON-журнал подій."""
+
     os.makedirs(DATA_FOLDER, exist_ok=True)
     entry = {
         "event": "login",
@@ -128,7 +123,6 @@ def save_log_entry(user, result):
 
 
 def log_event(func):
-    """Декоратор, що логує результат кожної спроби входу."""
 
     def wrapper(username, password):
         try:
@@ -144,7 +138,7 @@ def log_event(func):
 
 @log_event
 def login(username: str, password: str) -> bool:
-    """Перевірити логін і пароль користувача за даними з CSV-бази."""
+
     if not username or not password:
         raise ValueError("Логін і пароль не можуть бути порожніми")
     users_db = read_users_db()
@@ -155,7 +149,7 @@ def login(username: str, password: str) -> bool:
 
 
 def main():
-    """Запустити демонстрацію реєстрації, зберігання та входу."""
+
     print(f"Варіант: {VARIANT_NUMBER}, сіль: {MY_SALT}, алгоритм: sha256\n")
     create_users(list(USERS_TO_REGISTER))
     print_users_table()
