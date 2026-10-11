@@ -1,0 +1,10 @@
+[INFO] Parsing DNS log file labs\lab02\data\data_v08\dns_queries.csv...
+[INFO] Processed 13 DNS query records.
+[WARNING] Suspicious DNS query from 10.0.0.20 for bad-domain.example.invalid (blacklist)
+[WARNING] Suspicious DNS query from 10.0.0.21 for malware-test.example.invalid (blacklist)
+[WARNING] Suspicious DNS query from 10.0.0.22 for ajd83kdm29dk20skd02ld9skd02jd92jd92jd92jd92j.example.com (long_subdomain)
+[WARNING] Suspicious DNS query from 10.0.0.23 for xj3k9q2m7v5n1p8z4r6t0y2u4i6o8p0a2s4d6f8g0h2j4k6l8.top (long_subdomain;suspicious_tld)
+[WARNING] Suspicious DNS query from 10.0.0.24 for invoice-update.zip (blacklist)
+[WARNING] Suspicious DNS query from 10.0.0.25 for qwe98asd76zxc54rty32fgh10vbn88.xyz (long_subdomain;suspicious_tld)
+[WARNING] Suspicious DNS query from 10.0.0.28 for very-long-subdomain-name-used-for-dns-tunneling-demo-01234567890123456789.example.net (long_subdomain;long_txt_domain;high_entropy_subdomain)
+[INFO] Suspicious records exported to labs\lab02\data\dns_alerts.csv
