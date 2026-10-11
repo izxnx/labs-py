@@ -10,9 +10,16 @@
 
 ```powershell
 python -m pip install -r requirements.txt
+python -m labs.lab02.main
 python -m labs.lab02.main demo
 python -m labs.lab02.main analyze --dns-log labs/lab02/data/data_v08/dns_queries.csv --blacklist labs/lab02/data/data_v08/blacklist.txt --out-csv labs/lab02/data/dns_alerts.csv --min-domain-len 50 --log-file labs/lab02/data/dns_audit.log
 ```
+
+Запуск без аргументів автоматично показує демонстрацію `demo`. У PyCharm можна
+запускати `labs/lab02/main.py` безпосередньо. У конфігурації
+Run виберіть цей файл, інтерпретатор `.venv` і робочу директорію — корінь
+проєкту `cybersecurity-python-labs`. Для аналізу додайте аргументи `analyze`
+з прикладу вище.
 
 `demo` показує сценарії ООП Завдання 1. `analyze` читає DNS-журнал, виводить
 кількість запитів за типами, показує підозрілі записи, зберігає CSV-звіт і лог.
@@ -34,8 +41,8 @@ labs/lab02/data/data_v08/
 CSV має заголовки `Timestamp,ClientIP,Domain,QueryType`, дата й час подані в
 ISO 8601. Парсер приймає ці заголовки без урахування регістру, а також snake_case
 варіант. Чорний список містить по одному домену на рядок; порожні рядки й
-коментарі з `#` ігноруються. Файли `dns_queries.csv` та `blacklist.txt` у батьківській
-папці `data/` є копіями тих самих вхідних даних для зручності.
+коментарі з `#` ігноруються. Вхідні дані зберігаються лише в `data/data_v08/`;
+згенеровані звіт і журнал — у батьківській папці `data/`.
 
 Аргументи `analyze`:
 

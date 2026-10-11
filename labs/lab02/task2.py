@@ -7,6 +7,7 @@ import csv
 import logging
 import math
 import re
+import sys
 from collections import Counter
 from dataclasses import asdict, dataclass
 from datetime import datetime
@@ -234,7 +235,10 @@ def build_parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> int:
     """Точка входу CLI."""
     parser = build_parser()
-    args = parser.parse_args(argv)
+    arguments = sys.argv[1:] if argv is None else argv
+    if not arguments:
+        arguments = ["demo"]
+    args = parser.parse_args(arguments)
     if args.command == "demo":
         from .task1 import run_demo
 

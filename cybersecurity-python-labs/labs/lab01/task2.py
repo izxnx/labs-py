@@ -1,4 +1,3 @@
-
 USERS = {
     "crypto_specialist": {
         "role": "cryptographer",

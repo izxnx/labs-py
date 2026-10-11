@@ -10,10 +10,13 @@ venv/
 
 # Ruff cache
 .ruff_cache/
+**/.ruff_cache/
 
 # Lab data (generated at runtime)
 labs/lab01/data/users.csv
 labs/lab01/data/log.json
+labs/lab02/data/dns_alerts.csv
+labs/lab02/data/dns_audit.log
 
 # OS / IDE
 .DS_Store
