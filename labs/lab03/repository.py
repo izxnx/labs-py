@@ -11,7 +11,6 @@ from .database import get_connection
 class NotFoundError(Exception):
     """Запитаний запис або категорія відсутні."""
 
-
 class ConflictError(Exception):
     """Операція порушує унікальність або зв'язок між таблицями."""
 
