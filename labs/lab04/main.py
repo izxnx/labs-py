@@ -18,11 +18,15 @@ from pathlib import Path
 from typing import Any
 
 import requests
+from dotenv import load_dotenv
 
 from labs.lab04 import analysis, api_client
 from shared.student import VARIANT_NUMBER
 
 CVE_PATTERN = re.compile(r"CVE-[0-9]{4}-[0-9]{4,}")
+
+# Файл .env у корені репозиторію (не комітиться, див. .gitignore).
+ENV_FILE = Path(__file__).resolve().parents[2] / ".env"
 
 EXIT_OK = 0
 EXIT_DATA_ERROR = 1
@@ -161,4 +165,8 @@ def main(argv: list[str] | None = None) -> int:
 
 
 if __name__ == "__main__":
+    # Завантажує NVD_API_KEY з .env у змінні середовища процесу, якщо файл
+    # існує. Уже задана змінна середовища має пріоритет (override=False).
+    # Виконується лише під час запуску з консолі, тому тести не читають .env.
+    load_dotenv(ENV_FILE, override=False)
     raise SystemExit(main())

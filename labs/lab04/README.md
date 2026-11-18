@@ -52,7 +52,8 @@ labs/lab04/
 python -m pip install -r requirements.txt
 ```
 
-Нові залежності роботи: `requests==2.34.2`, `pytest==9.1.1`
+Нові залежності роботи: `requests==2.34.2`, `pytest==9.1.1`,
+`python-dotenv==1.2.4`
 (`ruff==0.17.0` уже був у файлі).
 
 ## Запуск
@@ -69,13 +70,18 @@ python -m labs.lab04.main --cve CVE-2099-10001 --input labs/lab04/data/nvd_sampl
 python -m labs.lab04.main --cve CVE-2021-44228
 ```
 
-Ключ API необов'язковий. Якщо він є, задайте його лише у змінній
-середовища поточного сеансу (не у файлах проєкту):
+Ключ API необов'язковий. Якщо він є, створіть у корені репозиторію файл
+`.env` за зразком `.env.example`:
 
-```powershell
-$env:NVD_API_KEY = "ваш-ключ"      # PowerShell
-export NVD_API_KEY="ваш-ключ"      # bash
+```text
+NVD_API_KEY=ваш-ключ
 ```
+
+Під час запуску з консолі `main.py` завантажує `.env` через
+`python-dotenv`. Файл `.env` внесено до `.gitignore`, тому ключ не
+потрапляє в Git. Змінна середовища, задана в терміналі
+(`$env:NVD_API_KEY = "..."`), має пріоритет над `.env`. Тести `.env` не
+читають.
 
 Ключ передається в заголовку `apiKey`, а не в URL. Запит виконується з
 `timeout=(3.05, 10)`, без перенаправлень і з перевіркою TLS.
