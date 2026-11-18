@@ -96,16 +96,34 @@ All checks passed!
 
 ## 4. Запит до NVD
 
-> Заповніть після власного запуску (ключ і заголовки не включайте).
-
-- Дата й час: `____`
+- Дата й час: 18.11.2026, 09:25 (Київ); один ручний запит.
 - Команда: `python -m labs.lab04.main --cve CVE-2021-44228`
-- Код завершення: `____`
-- Результат:
+- Код завершення: 0
 
 ```json
-(вставте отриманий JSON або повідомлення з stderr)
+{
+  "cve_id": "CVE-2021-44228",
+  "variant": 8,
+  "description": "Apache Log4j2 2.0-beta9 through 2.15.0 (excluding security releases 2.12.2, 2.12.3, and 2.3.1) JNDI features ... (скорочено)",
+  "vuln_status": "Analyzed",
+  "cvss_version": "3.1",
+  "score": 10.0,
+  "score_source": "nvd@nist.gov",
+  "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+  "rule": {
+    "threshold": 9.0,
+    "field": "scope",
+    "expected": "CHANGED"
+  },
+  "observed": "CHANGED",
+  "decision": "review"
+}
 ```
+
+Оцінка 10.0 ≥ 9.0 і `scope = CHANGED`, тому рішення `review`. Попередня
+спроба з недійсним ключем у `NVD_API_KEY` завершилася повідомленням
+«NVD повернув HTTP-помилку 404» і кодом 1 — це HTTP-помилка, а не
+порожній результат пошуку (`not_found`, код 0).
 
 ## 5. Висновки
 
